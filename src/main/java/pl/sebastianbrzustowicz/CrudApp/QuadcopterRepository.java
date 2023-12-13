@@ -29,7 +29,15 @@ public class QuadcopterRepository {
                         param.getMode(), param.getAltitude()
                 ));
 
-
         return 1;
+    }
+
+    public int update(Quadcopter quadcopter) {
+        return jdbcTemplate.update("UPDATE quadcopter SET mode=?, altitude=? WHERE id=?",
+                quadcopter.getMode(), quadcopter.getAltitude(), quadcopter.getId());
+    }
+
+    public int delete(int id) {
+        return jdbcTemplate.update("DELETE FROM quadcopter WHERE id=?", id);
     }
 }
