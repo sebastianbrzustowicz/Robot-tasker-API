@@ -20,3 +20,4 @@ Optional data to transmit in json:
 | :purple_circle: PATCH  | /quadcopter/user/data/camtrigger | make photo, start/stop recording | boolean |
 | :purple_circle: PATCH  | /quadcopter/user/data/camtoggle | camera/video toggle | boolean |
 | :purple_circle: PATCH  | /quadcopter/user/data/campitch | camera pitch angular speed | int |
+| :purple_circle: PATCH  | /quadcopter/user/data/payloadtoggle | payload clamp on/off | boolean |
