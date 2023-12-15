@@ -13,11 +13,6 @@ public class CrudController {
     @Autowired
     QuadcopterRepository quadcopterRepository;
 
-    //@GetMapping("/test")
-    //public int test() {
-    //    return 1;
-    //}
-
     @GetMapping("")
     public List<Quadcopter> getAll() {
         return quadcopterRepository.getAll();
