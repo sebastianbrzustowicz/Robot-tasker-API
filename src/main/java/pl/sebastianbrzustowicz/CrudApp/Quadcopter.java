@@ -18,17 +18,12 @@ public class Quadcopter {
     public String getMode() {
         return mode;
     }
-
     public int getAltitude() {
         return altitude;
     }
 
-    public void setMode(String newMode) {
-        this.mode = newMode;
-    }
+    public void setMode(String newMode) { this.mode = newMode; }
 
-    public void setAltitude(int newAltitude) {
-        this.altitude = newAltitude;
-    }
+    public void setAltitude(int newAltitude) { this.altitude = newAltitude; }
 
 }
