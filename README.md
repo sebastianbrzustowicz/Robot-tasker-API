@@ -1,40 +1,51 @@
 ## Endpoints
 
-Data to transmit in json:
+Client endpoints for user's data:
 
-| HTTP method | endpoint | description | type |
-| -------------- | -------------- | -------------- | -------------- |
-| :green_circle: GET  | /user/information | get information about vehicle before runtime | List |
-| :yellow_circle: POST  | /user/create | create vehicle row with new id and user data | List |
-| :red_circle: DELETE  | /user/delete/{id} | delete vehicle by specific id | int |
-| :yellow_circle: POST  | /user/login | authorization - connect to specific drone | List |
-| :green_circle: GET  | /{id}/quadcopter/user/data | get information about flight data | List |
-| :purple_circle: PATCH  | /{id}/quadcopter/user/data/mode | flight mode | String |
-| :purple_circle: PATCH  | /user/{id}/quadcopter/user/data/vtol | take off/landing | String |
-| :large_blue_circle: PUT  | /{id}/quadcopter/user/data/xyaltyaw | flight mode data update | List |
+| HTTP method | endpoint | description | request type | response type |
+| -------------- | -------------- | -------------- | -------------- | -------------- |
+| :yellow_circle: POST | /register | register new user | List<String> | null |
+| :red_circle: DELETE | /user/delete/{userId} | delete user | int | null |
+| :yellow_circle: POST | /login | login user | List<String> | null |
+| :yellow_circle: POST | /user/vehicle/register/{vehicleId} | register vehicle row with new id and user data | int | null |
+| :red_circle: DELETE | /user/vehicle/delete/{vehicleId} | delete vehicle by specific userId | int | null |
+| :green_circle: GET | /user/vehicle/information | get information about vehicles | int | List |
+| :yellow_circle: POST | /user/vehicle/connect/{vehicleId} | connect to user's vehicle | int | null |
+| :red_circle: DELETE | /user/vehicle/disconnect/{vehicleId} | disconnect from user's vehicle | int | null |
 
-Optional (depending on implemented robots type) data to transmit in json:
+Client endpoints based on specific vehicle type (quadcopter in this case):
 
-| HTTP method | endpoint | description | type |
-| -------------- | -------------- | -------------- | -------------- |
-| :purple_circle: PATCH  | /{id}/quadcopter/user/data/camtrigger | make photo, start/stop recording | boolean |
-| :purple_circle: PATCH  | /{id}/quadcopter/user/data/camtoggle | camera/video toggle | boolean |
-| :purple_circle: PATCH  | /{id}/quadcopter/user/data/campitch | camera pitch angular speed | int |
-| :purple_circle: PATCH  | /{id}/quadcopter/user/data/payloadtoggle | payload clamp on/off | boolean |
+| HTTP method | endpoint | description | request type | response type |
+| -------------- | -------------- | -------------- | -------------- | -------------- |
+| :large_blue_circle: PUT | /runtime/{vehicleId}/data/update | initialize data/send all data | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/vtol/{value} | take off/landing | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/xyaltyaw{value}  | flight data update | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/camtrigger{value}  | make photo, start/stop recording | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/camtoggle{value}  | camera/video toggle | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/campitch{value}  | camera pitch angular speed | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/payloadtoggle{value}  | payload clamp on/off | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/mode{value}  | flight mode | List<int> | null |
+
+Vehicle endpoints for data transmition:
+
+| HTTP method | endpoint | description | request type | response type |
+| -------------- | -------------- | -------------- | -------------- | -------------- |
+| :green_circle: GET | /robot/{vehicleId}/data | get information about flight data | int | List |
+| :purple_circle: PATCH | /robot/{vehicleId}/data/alt/{value} | altitude feedback | List<int> | null |
 
 ## Tables
 
 Users table:
-| id | login | password | email | phoneNum | role | accCreated |
+| userId | login | password | email | phoneNum | role | accCreated |
 | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
 | 745339102  | "mylogin" | mypw658! | "example@gmail.com" | 638179534 | "admin" | "01.12.2023 09:18" |
 | 753534612  | "mylogin2" | mypw372! | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
 
 Vehicles table:
-| id | vehicleId | vehicleName | vehicleType | registrationTime |
+| userId | vehicleId | vehicleName | vehicleType | registrationTime |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| 745339102  | 531365234 | "MyDrone1" | "Quadcopter" | "01.12.2023 09:18" |
-| 753534612  | 826391697 | "Raspberry4drone" | "Mobile robot" | "10.10.2023 19:23" |
+| 745339102  | 531365234 | "MyDrone1" | "quadcopter" | "01.12.2023 09:18" |
+| 753534612  | 826391697 | "Raspberry4drone" | "mobilerobot" | "10.10.2023 19:23" |
 
 Quadcopters table:
 | vehicleId | mode | vtol | x | y | alt | yaw | camTrig | camTog | camPitch | clamp |
