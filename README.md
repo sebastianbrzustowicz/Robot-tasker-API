@@ -4,8 +4,8 @@ Data to transmit in json:
 
 | HTTP method | endpoint | description | type |
 | -------------- | -------------- | -------------- | -------------- |
-| :green_circle: GET  | /user/information | get information about vehicle before flight | List |
-| :yellow_circle: POST  | /user/create | create drone row with new id and user data | List |
+| :green_circle: GET  | /user/information | get information about vehicle before runtime | List |
+| :yellow_circle: POST  | /user/create | create vehicle row with new id and user data | List |
 | :red_circle: DELETE  | /user/delete/{id} | delete vehicle by specific id | int |
 | :yellow_circle: POST  | /user/login | authorization - connect to specific drone | List |
 | :green_circle: GET  | /{id}/quadcopter/user/data | get information about flight data | List |
@@ -13,7 +13,7 @@ Data to transmit in json:
 | :purple_circle: PATCH  | /user/{id}/quadcopter/user/data/vtol | take off/landing | String |
 | :large_blue_circle: PUT  | /{id}/quadcopter/user/data/xyaltyaw | flight mode data update | List |
 
-Optional data to transmit in json:
+Optional (depending on implemented robots type) data to transmit in json:
 
 | HTTP method | endpoint | description | type |
 | -------------- | -------------- | -------------- | -------------- |
@@ -31,16 +31,16 @@ Users table:
 | 753534612  | "mylogin2" | mypw372! | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
 
 Vehicles table:
-| id | vehicleId | vehicleName | vehicleTypee | registrationTime |
+| id | vehicleId | vehicleName | vehicleType | registrationTime |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
 | 745339102  | 531365234 | "MyDrone1" | "Quadcopter" | "01.12.2023 09:18" |
 | 753534612  | 826391697 | "Raspberry4drone" | "Mobile robot" | "10.10.2023 19:23" |
 
-Runtime table:
+Quadcopters table:
 | vehicleId | mode | vtol | x | y | alt | yaw | camTrig | camTog | camPitch | clamp |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 | 531365234 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
 | 826391697 | 2 | 1 | 2 | 5 | 3 | 1 | 1 | 0 | 3 | 1 |
 
-flightMode: 1 - Mild, 2 - Normal, 3 - Sport.
+flightMode: 1 - Mild, 2 - Normal, 3 - Sport.   
 vtol: 0 - no action, 1 - take off, 2 - landing.
