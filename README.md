@@ -25,16 +25,16 @@ Optional data to transmit in json:
 ## Tables
 
 Users table:
-| id | login | password | email | phoneNumber | accCreated |
-| -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| 745339102  | "mylogin" | mypassword658! | "example@gmail.com" | 638179534 | "01.12.2023 09:18" |
-| 753534612  | "mylogin2" | mypassword658!2 | "example2@gmail.com" | 632857365 | "10.10.2023 19:23" |
+| id | login | password | email | phoneNum | role | accCreated |
+| -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
+| 745339102  | "mylogin" | mypw658! | "example@gmail.com" | 638179534 | "admin" | "01.12.2023 09:18" |
+| 753534612  | "mylogin2" | mypw372! | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
 
 Vehicles table:
-| id | vehicleId | vehicleName | registrationTime |
-| -------------- | -------------- | -------------- | -------------- |
-| 745339102  | 531365234 | "MyDrone1" | "01.12.2023 09:18" |
-| 753534612  | 826391697 | "Raspberry4drone" | "10.10.2023 19:23" |
+| id | vehicleId | vehicleName | vehicleTypee | registrationTime |
+| -------------- | -------------- | -------------- | -------------- | -------------- |
+| 745339102  | 531365234 | "MyDrone1" | "Quadcopter" | "01.12.2023 09:18" |
+| 753534612  | 826391697 | "Raspberry4drone" | "Mobile robot" | "10.10.2023 19:23" |
 
 Runtime table:
 | vehicleId | mode | vtol | x | y | alt | yaw | camTrig | camTog | camPitch | clamp |
