@@ -37,7 +37,7 @@ Vehicles table:
 | 753534612  | 826391697 | "Raspberry4drone" | "10.10.2023 19:23" |
 
 Runtime table:
-| vehicleId | mode | vtol | xSpeed | ySpeed | altSpeed | yawSpeed | camTrigger | camToggle | camPitch | clamp |
+| vehicleId | mode | vtol | x | y | alt | yaw | camTrig | camTog | camPitch | clamp |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 | 531365234 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
 | 826391697 | 2 | 1 | 2 | 5 | 3 | 1 | 1 | 0 | 3 | 1 |
