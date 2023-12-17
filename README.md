@@ -38,8 +38,8 @@ Vehicle endpoints for data transmition:
 Users table:
 | userId | login | password | email | phoneNum | role | accCreated |
 | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| randomUUID()  | "mylogin" | mypw658! | "example@gmail.com" | 638179534 | "admin" | "01.12.2023 09:18" |
-| randomUUID()  | "mylogin2" | mypw372! | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
+| randomUUID()  | "mylogin" | "mypw658!" | "example@gmail.com" | 638179534 | "admin" | "01.12.2023 09:18" |
+| randomUUID()  | "mylogin2" | "mypw372!" | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
 
 Vehicles table:
 | userId | vehicleId | vehicleName | vehicleType | registrationTime |
