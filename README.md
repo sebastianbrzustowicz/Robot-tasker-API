@@ -20,10 +20,10 @@ Client endpoints based on specific vehicle type (quadcopter in this case):
 | :large_blue_circle: PUT | /runtime/{vehicleId}/data/update | initialize data/send all data | List<int> | null |
 | :purple_circle: PATCH | /runtime/{vehicleId}/data/vtol/{value} | take off/landing | List<int> | null |
 | :purple_circle: PATCH | /runtime/{vehicleId}/data/xyaltyaw{value}  | flight data update | List<int> | null |
-| :purple_circle: PATCH | /runtime/{vehicleId}/data/camtrigger{value}  | make photo, start/stop recording | List<int> | null |
-| :purple_circle: PATCH | /runtime/{vehicleId}/data/camtoggle{value}  | camera/video toggle | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/camtrigger{value}  | make photo, start/stop recording | List<Object> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/camtoggle{value}  | camera/video toggle | List<Object> | null |
 | :purple_circle: PATCH | /runtime/{vehicleId}/data/campitch{value}  | camera pitch angular speed | List<int> | null |
-| :purple_circle: PATCH | /runtime/{vehicleId}/data/payloadtoggle{value}  | payload clamp on/off | List<int> | null |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/payloadtoggle{value}  | payload clamp on/off | List<Object> | null |
 | :purple_circle: PATCH | /runtime/{vehicleId}/data/mode{value}  | flight mode | List<int> | null |
 
 Vehicle endpoints for data transmition:
