@@ -4,45 +4,45 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.UUID;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    private int id;
+    private String userId;
     private String login;
     private String password;
     private String email;
     private int phoneNumber;
-    private List<String> vehicles = new ArrayList<>();
+    private String role;
+    private LocalDate accCreated;
 
-    public User(int id, String login, String password, String email, int phoneNumber, String vehicleId) {
-        this.id = generateRandomId();
+    public User(int id, String login, String password, String email, int phoneNumber, String vehicleId, String role, LocalDate accCreated) {
+        this.userId = generateRandomId();
         this.login = login;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.vehicles.add(vehicleId);
+        this.role = role;
+        this.accCreated = accCreated;
     }
 
-    private Integer generateRandomId() {
-        // Generating random id number
-        Random random = new Random();
-        return random.nextInt(1000000000);
+    private String generateRandomId() {
+        // Generating random UUID
+        UUID uuid = UUID.randomUUID();
+        return uuid.toString();
     }
 
     // Getting user's variables
-    public int getId() { return this.id; }
+    public String getUserId() { return this.userId; }
     public String getLogin() { return this.login; }
     public String getPassword() { return this.password; }
-    public String getEmail() {
-        return this.email;
-    }
+    public String getEmail() { return this.email; }
     public int getPhoneNumber() { return this.phoneNumber; }
-    public List<String> getVehicles() { return vehicles; }
+    public String getRole() { return this.role; }
+    public LocalDate getAccCreated() { return this.accCreated; }
 
     // Setting user's variables
     public void setLogin(String newLogin) { this.login = newLogin; }
@@ -51,9 +51,9 @@ public class User {
     public void setPhoneNumber(int newPhoneNumber) { this.phoneNumber = newPhoneNumber; }
 
     // Adding user's variables data
-    public void addVehicle(String vehicleId) { this.vehicles.add(vehicleId); }
+    //public void addVehicle(String vehicleId) { this.vehicles.add(vehicleId); }
 
     // Removing user's variables data
-    public void deleteVehicle(String vehicleId) { this.vehicles.remove(vehicleId); }
+    //public void deleteVehicle(String vehicleId) { this.vehicles.remove(vehicleId); }
 
 }
