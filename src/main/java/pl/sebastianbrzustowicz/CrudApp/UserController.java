@@ -3,13 +3,12 @@ package pl.sebastianbrzustowicz.CrudApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/rest")
 public class UserController {
 
     @Autowired
@@ -29,7 +28,7 @@ public class UserController {
         return userRepository.deleteUser(userId);
     }
 
-    // RETURN: logged in == 1 else 0
+    // RETURN: String status with UUID if successed
     @PostMapping("/login")
     public String loginUser(@RequestBody Map<String, String> UserLogin) {
         String email = UserLogin.get("email");
@@ -39,6 +38,16 @@ public class UserController {
             String identifier = userRepository.getUserUUID(email, password);
             return "Logged in, your UUID is: " + identifier; }
         else { return "Login failed"; }
+    }
+
+    @PostMapping("/user/vehicle/register")
+    public String registerVehicle(@RequestBody Map<String, String> UUIDs) {
+        String userId = UUIDs.get("userId");
+        String vehicleId = UUIDs.get("vehicleId");
+        int registerSuccess = userRepository.registerVehicle(userId, vehicleId);
+        if (registerSuccess == 1) {
+            return "Registration successful"; }
+        else { return "Registration failed"; }
     }
 
 }

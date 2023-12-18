@@ -46,4 +46,15 @@ public class UserRepository {
         return jdbcTemplate.queryForObject(sql, String.class, email, password);
     }
 
+    public int registerVehicle(String userId, String vehicleId) {
+        String sql = """
+                UPDATE crudapp.vehicles
+                SET
+                  `userId` = ?,
+                  `registrationTime` = CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw')
+                WHERE
+                  `vehicleId` = ?;""";
+        return jdbcTemplate.update(sql, userId, vehicleId);
+    }
+
 }

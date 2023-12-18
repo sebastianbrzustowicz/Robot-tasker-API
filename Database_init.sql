@@ -51,6 +51,13 @@ VALUES (
 );
 -- display table
 SELECT * FROM vehicles;
+-- apply changes
+UPDATE crudapp.vehicles
+SET
+  `userId` = null,
+  `registrationTime` = null
+WHERE
+  `vehicleId` = '39726ba8-9d4a-11ee-8070-0242ac110002';
 
 -- === quadcopters table ===
 -- create table
