@@ -13,7 +13,7 @@ Client endpoints for user's data:
 | -------------- | -------------- | -------------- | -------------- | -------------- |
 | :yellow_circle: POST | /register | register new user | User | int |
 | :red_circle: DELETE | /user/delete/{userId} | delete user | String | int |
-| :yellow_circle: POST | /login | login user | List<String> | int |
+| :yellow_circle: POST | /login | login user | List<String> | String |
 | :yellow_circle: POST | /user/vehicle/register/{vehicleId} | register vehicle row with new id and user data | int | int |
 | :red_circle: DELETE | /user/vehicle/delete/{vehicleId} | delete vehicle by specific userId | int | int |
 | :green_circle: GET | /user/vehicle/information | get information about vehicles | int | List |
