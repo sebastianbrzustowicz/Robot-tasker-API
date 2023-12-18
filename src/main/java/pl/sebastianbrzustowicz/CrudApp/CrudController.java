@@ -65,4 +65,5 @@ public class CrudController {
     public int delete(@PathVariable("id") int id) {
         return quadcopterRepository.delete(id);
     }
+
 }

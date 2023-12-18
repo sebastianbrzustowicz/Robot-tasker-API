@@ -30,11 +30,11 @@ SELECT * FROM users;
 -- === vehicles table ===
 -- create table
 CREATE TABLE IF NOT EXISTS crudapp.vehicles (
-    userId VARCHAR(36),
+    userId VARCHAR(36) NULL,
     vehicleId VARCHAR(36) PRIMARY KEY,
     vehicleName VARCHAR(255) NOT NULL,
     vehicleType VARCHAR(50) NOT NULL,
-    registrationTime DATETIME NOT NULL,
+    registrationTime DATETIME NULL,
     FOREIGN KEY (`userId`) REFERENCES `crudapp`.`users`(`userId`)
 );
 -- clear table
@@ -42,11 +42,12 @@ TRUNCATE TABLE vehicles;
 -- insert example data
 INSERT INTO `crudapp`.`vehicles` (userId, vehicleId, vehicleName, vehicleType, registrationTime)
 VALUES (
-    'b8aa0ab7-9c79-11ee-89e3-0242ac110002',    -- function for MySQL 8.0+, it have to exist in 'users' table
+    null,    -- function for MySQL 8.0+
     UUID(),    -- vehicleId
     'MyDrone1',
     'quadcopter',
-    CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw')
+    null
+    -- CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw')
 );
 -- display table
 SELECT * FROM vehicles;

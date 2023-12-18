@@ -1,11 +1,14 @@
 package pl.sebastianbrzustowicz.CrudApp;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class UserRepository {
@@ -13,31 +16,34 @@ public class UserRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    //public List<Quadcopter> getAll() {
-    //    return jdbcTemplate.query("SELECT id, mode, altitude FROM quadcopter",
-    //            BeanPropertyRowMapper.newInstance(Quadcopter.class));
-    //}
+    public boolean existsByEmail(String email) {
+        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
+        return Optional.ofNullable(jdbcTemplate.queryForObject(sql, Integer.class, email))
+                .map(count -> count > 0)
+                .orElse(false);
+    }
 
-    //public Quadcopter getById(int id) {
-    //    return jdbcTemplate.queryForObject("SELECT id, mode, altitude FROM quadcopter WHERE " +
-    //            "id = ?", BeanPropertyRowMapper.newInstance(Quadcopter.class), id);
-    //}
+    public int registerUser(User newUser) {
+        String sql = "INSERT INTO users (userId, login, password, email, phoneNum, role, accCreated) " +
+                "VALUES (UUID(), ?, ?, ?, ?, ?, CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw'));";
+        return jdbcTemplate.update(sql,
+                newUser.getLogin(), newUser.getPassword(), newUser.getEmail(), newUser.getPhoneNumber(), "user"
+        );
+    }
 
-    //public int save(List<Quadcopter> quadcopterList) {
-    //    quadcopterList.forEach(param -> jdbcTemplate
-    //            .update("INSERT INTO quadcopter(mode, altitude) VALUES(?, ?)",
-    //                    param.getMode(), param.getAltitude()
-    //            ));
-    //
-    //    return 1;
-    //}
+    public int deleteUser(UUID userId) {
+        return jdbcTemplate.update("DELETE FROM users WHERE userId=?", userId.toString());
+    }
 
-    //public int update(Quadcopter quadcopter) {
-    //    return jdbcTemplate.update("UPDATE quadcopter SET mode=?, altitude=? WHERE id=?",
-    //            quadcopter.getMode(), quadcopter.getAltitude(), quadcopter.getId());
-    //}
+    public boolean loginUser(String email, String password) {
+        String sql = "SELECT COUNT(*) FROM users WHERE email = ? AND password = ?";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, email, password);
+        return count == 1;
+    }
 
-    //public int delete(int id) {
-    //    return jdbcTemplate.update("DELETE FROM quadcopter WHERE id=?", id);
-    //}
+    public String getUserUUID(String email, String password) {
+        String sql = "SELECT userId FROM users WHERE email = ? AND password = ?";
+        return jdbcTemplate.queryForObject(sql, String.class, email, password);
+    }
+
 }
