@@ -33,7 +33,7 @@ Client endpoints based on specific vehicle type (quadcopter in this case):
 | :purple_circle: PATCH | /runtime/{vehicleId}/data/camtoggle{value}  | camera/video toggle | List<Object> | int |
 | :purple_circle: PATCH | /runtime/{vehicleId}/data/campitch{value}  | camera pitch angular speed | List<int> | int |
 | :purple_circle: PATCH | /runtime/{vehicleId}/data/payloadtoggle{value}  | payload clamp on/off | List<Object> | int |
-| :purple_circle: PATCH | /runtime/{vehicleId}/data/mode{value}  | flight mode | List<int> | int |
+| :purple_circle: PATCH | /runtime/{vehicleId}/data/mode{value}  | flight mode | List&lt;int&gt; | int |
 
 Response type is mostly number of rows affected. 
 
@@ -49,19 +49,19 @@ Vehicle endpoints for data transmition:
 Users table:
 | userId | login | password | email | phoneNum | role | accCreated |
 | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| &lt;VARCHAR(36)&gt; | &lt;VARCHAR(255)&gt; | &lt;VARCHAR(255)&gt; | &lt;VARCHAR(255)&gt; | &lt;INT&gt; | &lt;VARCHAR(50)&gt; | &lt;DATETIME&gt; |
+| VARCHAR(36) | VARCHAR(255) | VARCHAR(255) | VARCHAR(255) | INT | VARCHAR(50) | DATETIME |
 | randomUUID()  | "mylogin2" | "mypw372!" | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
 
 Vehicles table:
 | userId | vehicleId | vehicleName | vehicleType | registrationTime |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| &lt;VARCHAR(36)&gt;  | &lt;VARCHAR(36)&gt; | &lt;VARCHAR(255)&gt; | &lt;VARCHAR(50)&gt; | &lt;DATETIME&gt; |
+| VARCHAR(36)  | VARCHAR(36) | VARCHAR(255) | VARCHAR(50) | DATETIME |
 | randomUUID()  | randomUUID() | "Raspberry4drone" | "mobilerobot" | "10.10.2023 19:23" |
 
 Quadcopters table:
 | vehicleId | mode | vtol | x | y | alt | yaw | camTrig | camTog | camPitch | clamp |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| &lt;VARCHAR(36)&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;BOOLEAN&gt; | &lt;BOOLEAN&gt; | &lt;INT&gt; | &lt;BOOLEAN&gt; |
+| VARCHAR(36) | INT | INT | INT | INT | INT | INT | BOOLEAN | BOOLEAN | INT | BOOLEAN |
 | randomUUID() | 2 | 1 | 2 | 5 | 3 | 1 | 1 | 0 | 3 | 1 |
 
 flightMode: 1 - Mild, 2 - Normal, 3 - Sport.   
