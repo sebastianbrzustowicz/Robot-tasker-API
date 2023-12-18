@@ -11,14 +11,14 @@ Client endpoints for user's data:
 
 | HTTP method | endpoint | description | request type | response type |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| :yellow_circle: POST | /rest/register | register new user | User | int |
+| :yellow_circle: POST | /rest/user/register | register new user | User | int |
 | :red_circle: DELETE | /rest/user/delete/{userId} | delete user | String | int |
 | :yellow_circle: POST | /rest/login | login user | Map&lt;String, String&gt; | String |
-| :yellow_circle: POST | /rest/user/vehicle/register | register user's vehicle | Map&lt;String, String&gt; | int |
-| :green_circle: GET | /rest/user/vehicle/information | information about user's vehicles | String | List&lt;Vehicle&gt; |
-| :red_circle: DELETE | /rest/user/vehicle/delete | deregistration user's vehicle | List<String> | int |
-| :yellow_circle: POST | /rest/user/vehicle/connect | connect to user's vehicle | int | int |
-| :red_circle: DELETE | /rest/user/vehicle/disconnect | disconnect from user's vehicle | int | int |
+| :yellow_circle: POST | /rest/vehicle/register | register user's vehicle | Map&lt;String, String&gt; | int |
+| :green_circle: GET | /rest/vehicle/information | information about user's vehicles | String | List&lt;Vehicle&gt; |
+| :red_circle: DELETE | /rest/vehicle/delete | deregistration user's vehicle | List<String> | int |
+| :yellow_circle: POST | /rest/vehicle/connect | connect to user's vehicle | int | int |
+| :red_circle: DELETE | /rest/vehicle/disconnect | disconnect from user's vehicle | int | int |
 
 Response type is mostly number of rows affected. 
 
