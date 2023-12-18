@@ -49,19 +49,19 @@ Vehicle endpoints for data transmition:
 Users table:
 | userId | login | password | email | phoneNum | role | accCreated |
 | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| randomUUID()  | "mylogin" | "mypw658!" | "example@gmail.com" | 638179534 | "admin" | "01.12.2023 09:18" |
+| &lt;VARCHAR(36)&gt; | &lt;VARCHAR(255)&gt; | &lt;VARCHAR(255)&gt; | &lt;VARCHAR(255)&gt; | &lt;INT&gt; | &lt;VARCHAR(50)&gt; | &lt;DATETIME&gt; |
 | randomUUID()  | "mylogin2" | "mypw372!" | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
 
 Vehicles table:
 | userId | vehicleId | vehicleName | vehicleType | registrationTime |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| randomUUID()  | randomUUID() | "MyDrone1" | "quadcopter" | "01.12.2023 09:18" |
+| &lt;VARCHAR(36)&gt;  | &lt;VARCHAR(36)&gt; | &lt;VARCHAR(255)&gt; | &lt;VARCHAR(50)&gt; | &lt;DATETIME&gt; |
 | randomUUID()  | randomUUID() | "Raspberry4drone" | "mobilerobot" | "10.10.2023 19:23" |
 
 Quadcopters table:
 | vehicleId | mode | vtol | x | y | alt | yaw | camTrig | camTog | camPitch | clamp |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| randomUUID() | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+| &lt;VARCHAR(36)&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;INT&gt; | &lt;BOOLEAN&gt; | &lt;BOOLEAN&gt; | &lt;INT&gt; | &lt;BOOLEAN&gt; |
 | randomUUID() | 2 | 1 | 2 | 5 | 3 | 1 | 1 | 0 | 3 | 1 |
 
 flightMode: 1 - Mild, 2 - Normal, 3 - Sport.   
