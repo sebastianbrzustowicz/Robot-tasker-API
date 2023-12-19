@@ -68,11 +68,23 @@ Vehicles table:
 | VARCHAR(36)  | VARCHAR(36) | VARCHAR(255) | VARCHAR(50) | DATETIME |
 | randomUUID()  | randomUUID() | "Raspberry4drone" | "mobilerobot" | "10.10.2023 19:23" |
 
-Quadcopters table:
-| vehicleId | mode | vtol | x | y | alt | yaw | camTrig | camTog | camPitch | clamp |
-| -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| VARCHAR(36) | INT | INT | INT | INT | INT | INT | BOOLEAN | BOOLEAN | INT | BOOLEAN |
-| randomUUID() | 2 | 1 | 2 | 5 | 3 | 1 | 1 | 0 | 3 | 1 |
+vehicleData object with example values:
+
+```json
+{
+  "vehicleId": "e218e18c-9e1c-11ee-8c90-0242ac120002",
+  "mode": 2,
+  "vtol": 0,
+  "x": 1,
+  "y": 4,
+  "alt": 50,
+  "yaw": 0,
+  "camTrig": 0,
+  "camTog": 0,
+  "camPitch": 0,
+  "clamp": 0
+}
+```
 
 flightMode: 1 - Mild, 2 - Normal, 3 - Sport.   
 vtol: 0 - no action, 1 - take off, 2 - landing.
