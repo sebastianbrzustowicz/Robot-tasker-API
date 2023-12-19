@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Page</title>
+    <!-- Dodaj SockJS i STOMP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+
+<h1>Vehicle Page</h1>
+
+<script>
+    var stompClient = null;
+	var vehicleId = "e218e18c-9e1c-11ee-8c90-0242ac120002";
+
+    // Połącz z WebSocketem po załadowaniu strony
+    document.addEventListener("DOMContentLoaded", function () {
+        connect();
+    });
+
+    function connect() {
+        var socket = new SockJS('http://localhost:8080/websocket-endpoint');
+        stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            console.log('Vehicle Connected: ' + frame);
+
+            // Tutaj, po nawiązaniu połączenia, możesz subskrybować kanały
+            stompClient.subscribe('/topic/vehicle-status/*', function (message) {
+                console.log('Received Message: ' + message.body);
+            });
+
+            stompClient.subscribe('/topic/vehicle-data/' + vehicleId, function (message) {
+				console.log('Received Vehicle Data: ' + message.body);
+			});
+        });
+    }
+</script>
+
+</body>
+</html>

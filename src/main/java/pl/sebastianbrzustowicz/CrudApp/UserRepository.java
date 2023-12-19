@@ -57,4 +57,20 @@ public class UserRepository {
         return jdbcTemplate.update(sql, userId, vehicleId);
     }
 
+    public List<Vehicle> vehicleInformation(String userId) {
+        String sql = "SELECT * FROM vehicles WHERE userId = ?";
+        return jdbcTemplate.query(sql, new Object[]{userId}, new BeanPropertyRowMapper<>(Vehicle.class));
+    }
+
+    public int deleteVehicle(String vehicleId) {
+        String sql = """
+                UPDATE crudapp.vehicles
+                SET
+                  `userId` = null,
+                  `registrationTime` = null
+                WHERE
+                  `vehicleId` = ?;""";
+        return jdbcTemplate.update(sql, vehicleId);
+    }
+
 }

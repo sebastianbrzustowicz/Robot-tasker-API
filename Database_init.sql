@@ -44,7 +44,7 @@ INSERT INTO `crudapp`.`vehicles` (userId, vehicleId, vehicleName, vehicleType, r
 VALUES (
     null,    -- function for MySQL 8.0+
     UUID(),    -- vehicleId
-    'MyDrone1',
+    'MyDrone2',
     'quadcopter',
     null
     -- CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw')

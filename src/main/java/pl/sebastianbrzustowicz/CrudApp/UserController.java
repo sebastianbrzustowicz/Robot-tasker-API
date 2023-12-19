@@ -15,7 +15,7 @@ public class UserController {
     UserRepository userRepository;
 
     // RETURN: rows affected
-    @PostMapping("/register")
+    @PostMapping("/user/register")
     public int registerUser(@RequestBody User newUser) {
         boolean isExisting = userRepository.existsByEmail(newUser.getEmail());
         if (!isExisting) { return userRepository.registerUser(newUser); }
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     // RETURN: String status with UUID if successed
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public String loginUser(@RequestBody Map<String, String> UserLogin) {
         String email = UserLogin.get("email");
         String password = UserLogin.get("password");
@@ -40,14 +40,27 @@ public class UserController {
         else { return "Login failed"; }
     }
 
-    @PostMapping("/user/vehicle/register")
+    @PostMapping("/vehicle/register")
     public String registerVehicle(@RequestBody Map<String, String> UUIDs) {
         String userId = UUIDs.get("userId");
         String vehicleId = UUIDs.get("vehicleId");
         int registerSuccess = userRepository.registerVehicle(userId, vehicleId);
-        if (registerSuccess == 1) {
-            return "Registration successful"; }
+        if (registerSuccess == 1) { return "Registration successful"; }
         else { return "Registration failed"; }
+    }
+
+    // RETURN: List of vehicles
+    @GetMapping("/vehicle/information")
+    public List<Vehicle> vehicleInformation(@RequestParam String userId) {
+        return userRepository.vehicleInformation(userId);
+    }
+
+    @PostMapping("/vehicle/delete")
+    public String deleteVehicle(@RequestBody Map<String, String> requestBody) {
+        String vehicleId = requestBody.get("vehicleId");
+        int isVehicleDeleted = userRepository.deleteVehicle(vehicleId);
+        if (isVehicleDeleted == 1) { return "Deleted vehicle with ID: " + vehicleId; }
+        else { return "Cannot delete"; }
     }
 
 }
