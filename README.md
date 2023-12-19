@@ -7,7 +7,7 @@ mvn spring-boot:run
 
 ## Endpoints
 
-Client endpoints for user's data:    
+Rest endpoints for client only:    
 
 | HTTP method | endpoint | description | request type | response type |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
@@ -16,9 +16,19 @@ Client endpoints for user's data:
 | :yellow_circle: POST | /rest/user/login | login user | &lt;String, String&gt; | String |
 | :yellow_circle: POST | /rest/vehicle/register | register user's vehicle | &lt;String, String&gt; | int |
 | :green_circle: GET | /rest/vehicle/information | information about user's vehicles | String | List&lt;Vehicle&gt; |
-| :red_circle: DELETE | /rest/vehicle/delete | deregistration user's vehicle | List<String> | int |
-| :yellow_circle: POST | /rest/vehicle/connect | connect to user's vehicle | int | int |
-| :red_circle: DELETE | /rest/vehicle/disconnect | disconnect from user's vehicle | int | int |
+| :yellow_circle: POST | /rest/vehicle/delete | deregistration user's vehicle | String | String |
+
+WebSocket endpoints for client (publisher) and vehicle (subscriber):    
+
+| STOMP method | endpoint | description | request type | response type |
+| -------------- | -------------- | -------------- | -------------- | -------------- |
+| :yellow_circle: CONNECT | /websocket-endpoint | connect to websocket | null | null |
+| :red_circle: DISCONNECT  | not implemented | disconnect websocket | null | null |
+| :green_circle: SUBSCRIBE  | /topic/vehicle-status/* | connection status | null | String |
+| :green_circle: SUBSCRIBE  | /topic/vehicle-status/{vehicleId} | get actual data | null | String |
+| :large_blue_circle: SEND  | /app/vehicle/connect | connect to specific vehicle | String | null |
+| :large_blue_circle: SEND  | /app/vehicle/disconnect | disconnect from specific vehicle | String | null |
+| :large_blue_circle: SEND  | /app/vehicle/data | send actual data to vehicle | String | null |
 
 Response type is mostly number of rows affected. 
 
