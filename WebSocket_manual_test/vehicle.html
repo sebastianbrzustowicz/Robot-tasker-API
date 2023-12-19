@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicle Page</title>
-    <!-- Dodaj SockJS i STOMP -->
+    <!-- SockJS and STOMP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
@@ -16,7 +16,7 @@
     var stompClient = null;
 	var vehicleId = "e218e18c-9e1c-11ee-8c90-0242ac120002";
 
-    // Połącz z WebSocketem po załadowaniu strony
+    // Connection to WebSocket after page load
     document.addEventListener("DOMContentLoaded", function () {
         connect();
     });
@@ -28,7 +28,7 @@
         stompClient.connect({}, function (frame) {
             console.log('Vehicle Connected: ' + frame);
 
-            // Tutaj, po nawiązaniu połączenia, możesz subskrybować kanały
+            // Here, once connected, you can subscribe to channels
             stompClient.subscribe('/topic/vehicle-status/*', function (message) {
                 console.log('Received Message: ' + message.body);
             });

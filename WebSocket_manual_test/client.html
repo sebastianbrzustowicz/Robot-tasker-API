@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Page</title>
-    <!-- Dodaj SockJS i STOMP -->
+    <!-- SockJS and STOMP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
@@ -15,7 +15,7 @@
 <script>
     var stompClient = null;
 
-    // Połącz z WebSocketem po załadowaniu strony
+    // Connect to WebSocket after page load
     document.addEventListener("DOMContentLoaded", function () {
         connect();
     });
