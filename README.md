@@ -17,8 +17,9 @@ Rest endpoints for client only:
 | :red_circle: DELETE | /rest/user/delete/{userId} | delete user | String | int |
 | :yellow_circle: POST | /rest/user/login | login user | &lt;String, String&gt; | String |
 | :purple_circle: PATCH | /rest/user/changedata | change user's data | User | String |
+| :large_blue_circle: PUT | /rest/admin/changedata | user data management | User | String |
 | :yellow_circle: POST | /rest/vehicle/register | register user's vehicle | &lt;String, String&gt; | int |
-| :large_blue_circle: PUT | /rest/vehicle/custom/register | register custom vehicle | &lt;Vehicle&gt; | int |
+| :yellow_circle: POST | /rest/vehicle/custom/register | register custom vehicle | Vehicle | int |
 | :green_circle: GET | /rest/vehicle/information | information about user's vehicles | String | List&lt;Vehicle&gt; |
 | :yellow_circle: POST | /rest/vehicle/delete | deregistration user's vehicle | String | String |
 
