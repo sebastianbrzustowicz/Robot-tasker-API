@@ -29,7 +29,7 @@
             console.log('Vehicle Connected: ' + frame);
 
             // Here, once connected, you can subscribe to channels
-            stompClient.subscribe('/topic/vehicle-status/*', function (message) {
+            stompClient.subscribe('/topic/vehicle-status/' + vehicleId, function (message) {
                 console.log('Received Message: ' + message.body);
             });
 
