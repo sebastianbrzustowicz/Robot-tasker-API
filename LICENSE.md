@@ -158,5 +158,5 @@ d. Nothing in this Public License constitutes or may be interpreted as a limitat
 
 #### Contact:
 
-[Sebastian Brzustowicz]
-[Se.Brzustowicz@gmail.com]
+&lt;Sebastian Brzustowicz&gt;   
+&lt;Se.Brzustowicz@gmail.com&gt;
