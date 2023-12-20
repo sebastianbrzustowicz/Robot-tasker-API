@@ -20,7 +20,10 @@ Rest endpoints for client only:
 | :green_circle: GET | /rest/vehicle/information | information about user's vehicles | String | List&lt;Vehicle&gt; |
 | :yellow_circle: POST | /rest/vehicle/delete | deregistration user's vehicle | String | String |
 
-WebSocket endpoints for client (publisher) and vehicle (subscriber):    
+A websocket approach was implemented for fast, real-time data transmission between the customer and the vehicle.   
+Websocket is implemented as multi-channel server-side application with STOMP approach.    
+An example implementation of the publisher and subscriber can be found in the `WebSocket_manual_test` folder.    
+WebSocket endpoints for client (publisher) and vehicle (subscriber):      
 
 | STOMP method | endpoint | description | request type | response type |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
