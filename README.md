@@ -1,4 +1,4 @@
-## Execute app
+## Initialize app
 
 Initializing app is possible with this command:
 ```
