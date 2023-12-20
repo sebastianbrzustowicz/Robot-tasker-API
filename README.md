@@ -60,7 +60,7 @@ Vehicles table:
 
 ## Data transmitted to vehicle
 
-Data sent via websocket is JSON.   
+Data is sent in JSON format.    
 Keywords and types may vary depending on vehicle type used.   
 Current state of object is fitting quadcopter data.   
 Example values:  
