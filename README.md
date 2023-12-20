@@ -7,6 +7,8 @@ mvn spring-boot:run
 
 ## Endpoints
 
+Rest API part embraces user and vehicle management issues.    
+Some of the options implemented are creating account, changing user's data, vehicle registration.
 Rest endpoints for client only:    
 
 | HTTP method | endpoint | description | request type | response type |
@@ -35,9 +37,11 @@ WebSocket endpoints for client (publisher) and vehicle (subscriber):
 | :large_blue_circle: SEND  | /app/vehicle/disconnect | disconnect from specific vehicle | String | null |
 | :large_blue_circle: SEND  | /app/vehicle/data | send actual data to vehicle | String | null |
 
-Integer response type is mostly number of rows affected. 
-
 ## Tables
+
+A MySQL database was used to store user and vehicle information.  
+The entire database is containerised using Docker.  
+The JDBC interface has been used to create a connection to the database.
 
 Users table:
 | userId | login | password | email | phoneNum | role | accCreated |
