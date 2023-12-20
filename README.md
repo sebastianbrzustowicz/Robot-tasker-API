@@ -16,7 +16,7 @@ Rest endpoints for client only:
 | :yellow_circle: POST | /rest/user/register | register new user | User | int |
 | :red_circle: DELETE | /rest/user/delete/{userId} | delete user | String | int |
 | :yellow_circle: POST | /rest/user/login | login user | &lt;String, String&gt; | String |
-| :purple_circle: PATCH | /rest/user/changedata | change user's data` | User | String |
+| :purple_circle: PATCH | /rest/user/changedata | change user's data | User | String |
 | :yellow_circle: POST | /rest/vehicle/register | register user's vehicle | &lt;String, String&gt; | int |
 | :large_blue_circle: PUT | /rest/vehicle/custom/register | register custom vehicle | &lt;Vehicle&gt; | int |
 | :green_circle: GET | /rest/vehicle/information | information about user's vehicles | String | List&lt;Vehicle&gt; |
@@ -29,8 +29,10 @@ WebSocket endpoints for client (publisher) and vehicle (subscriber):
 
 | STOMP method | endpoint | description | request type | response type |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
-| :yellow_circle: CONNECT | /websocket-endpoint | connect to websocket | null | null |
-| :red_circle: DISCONNECT  | not implemented | disconnect websocket | null | null |
+| :yellow_circle: CONNECT | /app/vehicle/connect | create new channel | String | null |
+| :red_circle: DISCONNECT  | /app/vehicle/disconnect | delete channel | String | null |
+| :yellow_circle: CONNECT | /websocket-endpoint | connect vehicle to ws | null | null |
+| :red_circle: DISCONNECT  | not implemented | disconnect vehicle from ws | null | null |
 | :green_circle: SUBSCRIBE  | /topic/vehicle-status/{vehicleId} | connection status | null | String |
 | :green_circle: SUBSCRIBE  | /topic/vehicle-data/{vehicleId} | get actual data | null | String |
 | :large_blue_circle: SEND  | /app/vehicle/connect | connect to specific vehicle | String | null |
