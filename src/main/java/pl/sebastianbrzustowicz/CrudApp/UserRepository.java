@@ -73,4 +73,38 @@ public class UserRepository {
         return jdbcTemplate.update(sql, vehicleId);
     }
 
+    public int userExists(String userId) {
+        String sql = "SELECT COUNT(*) FROM users WHERE userId = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, userId);
+    }
+
+    public int changeData(String userId, String newPassword) {
+        String sql = "UPDATE users SET `password` = ? WHERE userId = ?";
+        return jdbcTemplate.update(sql, newPassword, userId);
+    }
+
+    public int changeDataByAdmin(User updatedUser) {
+        String sql = """
+                UPDATE crudapp.users
+                SET
+                  `login` = ?,
+                  `password` = ?,
+                  `email` = ?,
+                  `phoneNum` = ?,
+                  `role` = ?,
+                  `accCreated` = ?
+                WHERE
+                  `userId` = ?;""";
+        return jdbcTemplate.update(sql, updatedUser.getLogin(), updatedUser.getPassword(), updatedUser.getEmail(),
+                updatedUser.getPhoneNumber(), updatedUser.getRole(), updatedUser.getAccCreated(), updatedUser.getUserId());
+    }
+
+    public int registerCustomVehicle(Vehicle customVehicle) {
+        String sql = "INSERT INTO vehicles (userId, vehicleId, vehicleName, vehicleType, registrationTime) " +
+                "VALUES (?, ?, ?, ?, CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw'));";
+        return jdbcTemplate.update(sql, customVehicle.getUserId(), customVehicle.getVehicleId(),
+                customVehicle.getVehicleName(), customVehicle.getVehicleType()
+        );
+    }
+
 }

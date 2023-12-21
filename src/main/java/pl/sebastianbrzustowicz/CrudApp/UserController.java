@@ -63,4 +63,41 @@ public class UserController {
         else { return "Cannot delete"; }
     }
 
+    @PatchMapping("/user/changedata")
+    public String changeUserData(@RequestBody User updatedUser) {
+        String userId = updatedUser.getUserId();
+        String newPassword = updatedUser.getPassword();
+
+        int count = userRepository.userExists(userId);
+
+        if (count > 0) {
+            userRepository.changeData(userId, newPassword);
+            return "Password updated successfully";
+        } else {
+            return "User not found";
+        }
+    }
+
+    @PutMapping("/admin/changedata")
+    public String changeUserDataByAdmin(@RequestBody User updatedUser) {
+        String userId = updatedUser.getUserId();
+        String newPassword = updatedUser.getPassword();
+
+        int count = userRepository.userExists(userId);
+
+        if (count > 0) {
+            userRepository.changeDataByAdmin(updatedUser);
+            return "Password updated successfully";
+        } else {
+            return "User not found";
+        }
+    }
+
+    @PostMapping("/vehicle/custom/register")
+    public String registerCustomVehicle(@RequestBody Vehicle customVehicle) {
+        int registerSuccess = userRepository.registerCustomVehicle(customVehicle);
+        if (registerSuccess == 1) { return "Registration successful"; }
+        else { return "Registration failed"; }
+    }
+
 }

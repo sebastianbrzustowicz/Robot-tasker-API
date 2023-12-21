@@ -34,7 +34,8 @@
             });
 
             stompClient.subscribe('/topic/vehicle-data/' + vehicleId, function (message) {
-				console.log('Received Vehicle Data: ' + message.body);
+				// here u can do something with received data `message.body`
+				// console.log('Received Vehicle Data: ' + message.body);
 			});
         });
     }

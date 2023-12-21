@@ -26,4 +26,24 @@ public class Vehicle {
         this.vehicleType = vehicleType;
         this.registrationTime = registrationTime;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public String getVehicleName() {
+        return vehicleName;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public String getRegistrationTime() {
+        return registrationTime;
+    }
 }

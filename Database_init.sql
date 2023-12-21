@@ -59,44 +59,6 @@ SET
 WHERE
   `vehicleId` = '39726ba8-9d4a-11ee-8070-0242ac110002';
 
--- === quadcopters table ===
--- create table
-CREATE TABLE IF NOT EXISTS crudapp.quadcopters (
-    vehicleId VARCHAR(36) PRIMARY KEY,
-    mode INT NOT NULL,
-    vtol INT NOT NULL,
-    x INT NOT NULL,
-    y INT NOT NULL,
-    alt INT NOT NULL,
-    yaw INT NOT NULL,
-    camTrig BOOLEAN  NOT NULL,
-    camTog BOOLEAN  NOT NULL,
-    camPitch INT NOT NULL,
-    clamp BOOLEAN  NOT NULL,
-    FOREIGN KEY (`vehicleId`) REFERENCES `crudapp`.`vehicles`(`vehicleId`)
-);
--- clear table
-TRUNCATE TABLE vehicles;
--- insert example data
-INSERT INTO `crudapp`.`quadcopters` (vehicleId, mode, vtol, x, y, alt, yaw, camTrig, camTog, camPitch, clamp)
-VALUES (
-    '0d1e43a7-9c7a-11ee-89e3-0242ac110002',    -- vehicleId
-    1,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0
-);
--- display table
-SELECT * FROM quadcopters;
-
-
 -- delete table
 DROP TABLE users;
 DROP TABLE vehicles;
-DROP TABLE quadcopters;
