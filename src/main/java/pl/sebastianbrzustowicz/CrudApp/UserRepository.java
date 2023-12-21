@@ -48,7 +48,7 @@ public class UserRepository {
 
     public int registerVehicle(String userId, String vehicleId) {
         String sql = """
-                UPDATE crudapp.vehicles
+                UPDATE vehicles
                 SET
                   `userId` = ?,
                   `registrationTime` = CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw')
@@ -64,7 +64,7 @@ public class UserRepository {
 
     public int deleteVehicle(String vehicleId) {
         String sql = """
-                UPDATE crudapp.vehicles
+                UPDATE vehicles
                 SET
                   `userId` = null,
                   `registrationTime` = null
@@ -85,7 +85,7 @@ public class UserRepository {
 
     public int changeDataByAdmin(User updatedUser) {
         String sql = """
-                UPDATE crudapp.users
+                UPDATE users
                 SET
                   `login` = ?,
                   `password` = ?,

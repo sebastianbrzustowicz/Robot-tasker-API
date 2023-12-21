@@ -1,8 +1,8 @@
-USE crudapp;
+USE robotTaskerApi;
 
 -- === users table ===
 -- create table
-CREATE TABLE IF NOT EXISTS  crudapp.users (
+CREATE TABLE IF NOT EXISTS  robotTaskerApi.users (
 	userId VARCHAR(36) PRIMARY KEY,
     login VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -29,18 +29,18 @@ SELECT * FROM users;
 
 -- === vehicles table ===
 -- create table
-CREATE TABLE IF NOT EXISTS crudapp.vehicles (
+CREATE TABLE IF NOT EXISTS robotTaskerApi.vehicles (
     userId VARCHAR(36) NULL,
     vehicleId VARCHAR(36) PRIMARY KEY,
     vehicleName VARCHAR(255) NOT NULL,
     vehicleType VARCHAR(50) NOT NULL,
     registrationTime DATETIME NULL,
-    FOREIGN KEY (`userId`) REFERENCES `crudapp`.`users`(`userId`)
+    FOREIGN KEY (`userId`) REFERENCES `robotTaskerApi`.`users`(`userId`)
 );
 -- clear table
 TRUNCATE TABLE vehicles;
 -- insert example data
-INSERT INTO `crudapp`.`vehicles` (userId, vehicleId, vehicleName, vehicleType, registrationTime)
+INSERT INTO `robotTaskerApi`.`vehicles` (userId, vehicleId, vehicleName, vehicleType, registrationTime)
 VALUES (
     null,    -- function for MySQL 8.0+
     UUID(),    -- vehicleId
@@ -52,7 +52,7 @@ VALUES (
 -- display table
 SELECT * FROM vehicles;
 -- apply changes
-UPDATE crudapp.vehicles
+UPDATE robotTaskerApi.vehicles
 SET
   `userId` = null,
   `registrationTime` = null
