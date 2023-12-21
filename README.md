@@ -1,13 +1,12 @@
 ## Robot Tasker API
 
-Robot Tasker API is a Java-based application designed for creating fast,   
-real-time communication with robot 'over the internet'.   
-Mostly sending desired values to robot is crucial in terms of connection speed.   
+Robot Tasker API is a Java-based, server-side application created to establish fast and real-time communication with robots 'over the internet'. 
+Sending desired values to robot is crucial in terms of connection speed.   
 This is why 'over the internet' solutions are not so popular, as opposed to short-range methods.       
 In this case, the WebSocket method was used, which provides high-speed data transfer. 
-Moreover, this solution adds a teleoperational aspect to the robot control.
-A multi-channel approach was used to implement the websocket.
-The application uses a MySQL database to store user and vehicle information.
+Moreover, this solution adds a teleoperational aspect to the robot control.  
+A multi-channel approach was used to implement the websocket.  
+The application uses a MySQL database to store user and vehicle information.  
 
 ## Docker
 
