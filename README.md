@@ -83,3 +83,9 @@ Example values:
 
 mode: 1 - Mild, 2 - Normal, 3 - Sport.   
 vtol: 0 - no action, 1 - take off, 2 - landing.
+
+## License
+
+Robot-tasker-API is released under the CC BY-NC-ND 4.0 license.
+
+
