@@ -1,9 +1,41 @@
+## Robot Tasker API
+
+Robot Tasker API is a Java-based application designed for creating fast real-time communication with vehicle over the internet.   
+Mostly sending desired values to robot is crucial in terms of connection speed.   
+Therefore 'over internet' solutions are not such popular.   
+In this case, the WebSocket method was used, which provides high-speed data transfer. 
+Moreover, this solution adds a teleoperational aspect to the robot control.
+A multi-channel approach was used to implement the websocket.
+The application uses a MySQL database to store user and vehicle information.
+
+## Docker
+
+The Dockerfile will provide containerisation and initialisation of the MySQL database.  
+There is a set of commands to get to the same point when starting the application.  
+Firstly make sure u are in `Docker` directory.   
+Now u can execute building process:   
+```
+docker build -t mysql:latest .
+```
+You can then run the container with the default password or you can change it (don't forget to change it in the project properties too):
+```
+docker run --name robotTaskerApiContainer -e MYSQL_ROOT_PASSWORD=sebastian -d -p 3306:3306 mysql:latest
+```
+Now the MySQL container should run properly.
+
 ## Initialize app
 
-Initializing app is possible with this command:
+Now it is time to compile and run API created in Java.
+Make sure u are in main project directory this time.   
+Firstly install all dependencies:
+```
+mvn clean install
+```
+Then run application:
 ```
 mvn spring-boot:run
 ```
+Now everything should be set up.
 
 ## Endpoints
 
@@ -50,13 +82,13 @@ Users table:
 | userId | login | password | email | phoneNum | role | accCreated |
 | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
 | VARCHAR(36) | VARCHAR(255) | VARCHAR(255) | VARCHAR(255) | INT | VARCHAR(50) | DATETIME |
-| randomUUID()  | "mylogin2" | "mypw372!" | "mail@gmail.com" | 632857365 | "user" | "10.10.2023 19:23" |
+| randomUUID()  | "myLogin" | "myPassword" | "example@email.com" | 666777888 | "user" | "10.10.2023 19:23" |
 
 Vehicles table:
 | userId | vehicleId | vehicleName | vehicleType | registrationTime |
 | -------------- | -------------- | -------------- | -------------- | -------------- |
 | VARCHAR(36)  | VARCHAR(36) | VARCHAR(255) | VARCHAR(50) | DATETIME |
-| randomUUID()  | randomUUID() | "Raspberry4drone" | "mobilerobot" | "10.10.2023 19:23" |
+| randomUUID()  | randomUUID() | "myDrone" | "Quadcopter" | "10.10.2023 19:23" |
 
 ## Data transmitted to vehicle
 
@@ -81,6 +113,9 @@ Example values:
 }
 ```
 
+Data interpretation depends on vehicle used and its needs.
+
+Example encoding:
 mode: 1 - Mild, 2 - Normal, 3 - Sport.   
 vtol: 0 - no action, 1 - take off, 2 - landing.
 
