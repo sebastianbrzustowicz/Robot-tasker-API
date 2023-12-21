@@ -12,7 +12,7 @@ The application uses a MySQL database to store user and vehicle information.
 
 The Dockerfile will provide containerisation and initialisation of the MySQL database.  
 There is a set of commands to get to the same point when starting the application.  
-Firstly make sure u are in `Docker` directory.   
+Firstly make sure you are in `Docker` directory.   
 Now u can execute building process:   
 ```
 docker build -t mysql:latest .
