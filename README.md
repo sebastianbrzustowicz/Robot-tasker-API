@@ -119,6 +119,16 @@ Example encoding:
 mode: 1 - Mild, 2 - Normal, 3 - Sport.   
 vtol: 0 - no action, 1 - take off, 2 - landing.
 
+## Tests
+
+Implemented JUnit tests:
+```
+testRegisterUser_SuccessfulRegistration()
+testRegisterUser_FailedRegistration()
+testLoginUser_SuccessfulLogin()
+testLoginUser_FailedLogin()
+```
+
 ## License
 
 Robot-tasker-API is released under the CC BY-NC-ND 4.0 license.
