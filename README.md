@@ -122,7 +122,7 @@ vtol: 0 - no action, 1 - take off, 2 - landing.
 ## Tests
 
 Implemented JUnit tests:
-```
+```java
 testRegisterUser_SuccessfulRegistration()
 testRegisterUser_FailedRegistration()
 testLoginUser_SuccessfulLogin()
