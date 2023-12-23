@@ -56,8 +56,7 @@ public class UserController {
     }
 
     @PostMapping("/vehicle/delete")
-    public String deleteVehicle(@RequestBody Map<String, String> requestBody) {
-        String vehicleId = requestBody.get("vehicleId");
+    public String deleteVehicle(@RequestBody String vehicleId) {
         int isVehicleDeleted = userRepository.deleteVehicle(vehicleId);
         if (isVehicleDeleted == 1) { return "Deleted vehicle with ID: " + vehicleId; }
         else { return "Cannot delete"; }
@@ -81,7 +80,6 @@ public class UserController {
     @PutMapping("/admin/changedata")
     public String changeUserDataByAdmin(@RequestBody User updatedUser) {
         String userId = updatedUser.getUserId();
-        String newPassword = updatedUser.getPassword();
 
         int count = userRepository.userExists(userId);
 
