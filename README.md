@@ -58,6 +58,8 @@ Rest endpoints for client only:
 A websocket approach was implemented for fast, real-time data transmission between the customer and the vehicle.   
 Websocket is implemented as multi-channel server-side application with STOMP approach.    
 An example implementation of the publisher and subscriber can be found in the `WebSocket_manual_test` folder.    
+One assumption made is that the vehicle should have its permanent vehicleId, which is similar to the MAC.    
+The vehicleId should be registered for recognition and that is all.
 WebSocket endpoints for client (publisher) and vehicle (subscriber):      
 
 | STOMP method | endpoint | description | request type | response type |
@@ -92,8 +94,10 @@ Vehicles table:
 
 ## Data transmitted to vehicle
 
-Data is sent in JSON format.    
+Data is sent in stringified JSON format.    
+There are no restrictions imposed on the data to be transmitted in terms of quantity or naming.    
 Keywords and types may vary depending on vehicle type used.   
+Basically the data content depends on the client and the vehicle implementation, because this app is just a connector.    
 Current state of object is fitting quadcopter data.   
 Example values:  
 
@@ -121,12 +125,22 @@ vtol: 0 - no action, 1 - take off, 2 - landing.
 
 ## Tests
 
-Implemented JUnit tests:
+Some simple JUnit tests have been implemented:
 ```java
 testRegisterUser_SuccessfulRegistration()
 testRegisterUser_FailedRegistration()
 testLoginUser_SuccessfulLogin()
 testLoginUser_FailedLogin()
+testRegisterVehicle_SuccessfulRegistration()
+testRegisterVehicle_FailedRegistration()
+testDeleteVehicle_SuccessfulDeletion()
+testDeleteVehicle_FailedDeletion()
+testChangeUserData_SuccessfulChange()
+testChangeUserData_FailedChange()
+testChangeUserDataByAdmin_SuccessfulChange()
+testChangeUserDataByAdmin_FailedChange()
+testRegisterCustomVehicle_SuccessfulRegister()
+testRegisterCustomVehicle_FailedRegister()
 ```
 
 ## License
