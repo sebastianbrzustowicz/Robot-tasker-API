@@ -10,23 +10,23 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    // Konfiguracja brokera wiadomości (STOMP)
+    // Message broker configuration (STOMP)
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        // Włącz prosty broker umożliwiający wysyłanie wiadomości do klientów subskrybujących konkretne tematy
+        // Enable a simple broker to send messages to clients subscribing to specific topics
         config.enableSimpleBroker("/topic");
 
-        // Ustaw prefix dla docelowych punktów końcowych aplikacji
+        // Set the prefix for the target endpoints of the application
         config.setApplicationDestinationPrefixes("/app");
     }
 
-    // Rejestracja punktów końcowych dla protokołu STOMP
+    // Registration of endpoints for the STOMP protocol
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // Dodaj punkt końcowy "/websocket-endpoint" z obsługą SockJS
+        // Add "/websocket-endpoint" endpoint with SockJS support
         registry
                 .addEndpoint("/websocket-endpoint")
-                .setAllowedOriginPatterns("*")  // Umożliwienie dostępu od wszystkich źródeł
+                .setAllowedOriginPatterns("*")  // Enabling access from all sources
                 .withSockJS();
     }
 
