@@ -126,9 +126,11 @@ class UserControllerTest {
         // Given
         Mockito.when(userRepository.deleteVehicle(Mockito.anyString())).thenReturn(1);
         String vehicleId = "123456789";
+        Map<String, String> data = new HashMap<>();
+        data.put("vehicleId", vehicleId);
 
         // When
-        String result = userController.deleteVehicle(vehicleId);
+        String result = userController.deleteVehicle(data);
         String expected = "Deleted vehicle with ID: " + vehicleId;
         // Then
         assertEquals(expected, result);
@@ -139,9 +141,11 @@ class UserControllerTest {
         // Given
         Mockito.when(userRepository.deleteVehicle(Mockito.anyString())).thenReturn(0);
         String vehicleId = "123456789";
+        Map<String, String> data = new HashMap<>();
+        data.put("vehicleId", vehicleId);
 
         // When
-        String result = userController.deleteVehicle(vehicleId);
+        String result = userController.deleteVehicle(data);
         String expected = "Cannot delete";
         // Then
         assertEquals(expected, result);
