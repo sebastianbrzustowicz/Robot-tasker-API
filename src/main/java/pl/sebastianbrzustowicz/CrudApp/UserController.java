@@ -56,8 +56,10 @@ public class UserController {
     }
 
     @PostMapping("/vehicle/delete")
-    public String deleteVehicle(@RequestBody String vehicleId) {
+    public String deleteVehicle(@RequestBody Map<String, String> data) {
+        String vehicleId = data.get("vehicleId");
         int isVehicleDeleted = userRepository.deleteVehicle(vehicleId);
+        System.out.println("Wartość zmiennej: " + vehicleId);
         if (isVehicleDeleted == 1) { return "Deleted vehicle with ID: " + vehicleId; }
         else { return "Cannot delete"; }
     }
