@@ -151,7 +151,7 @@ testRegisterCustomVehicle_FailedRegister()
 
 ## License
 
-Robot-tasker-API is released under the CC BY-NC-ND 4.0 license.
+Robot Tasker API is released under the CC BY-NC-ND 4.0 license.
 
 ## Author
 
