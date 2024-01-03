@@ -8,6 +8,11 @@ In this case, the WebSocket method was used, which provides high-speed data tran
 Moreover, this solution adds a teleoperational aspect to the robot control.  
 A multi-channel approach was used to implement the WebSocket, allowing server to handle multiple connections.  
 The application uses a MySQL database to store user and vehicle information.  
+### Disclaimer
+Complete version which guarantee best performance is not available publicly.   
+Only alpha version of API with license restrictions is available.   
+Please contact me if you are interested in cooperation.   
+I am willing to help.  
 
 ## Docker
 
@@ -148,4 +153,7 @@ testRegisterCustomVehicle_FailedRegister()
 
 Robot-tasker-API is released under the CC BY-NC-ND 4.0 license.
 
+## Author
+
+Sebastian Brzustowicz &lt;Se.Brzustowicz@gmail.com&gt;
 
