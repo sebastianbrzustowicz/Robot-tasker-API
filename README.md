@@ -115,21 +115,9 @@ WebSocket endpoints for client (publisher) and vehicle (subscriber):
 
 ## MySQL database
 
-A MySQL database was used to store user and vehicle information.  
-The entire database is containerised using Docker.  
-The JDBC interface has been used to create a connection to the database.
-
-Users table:
-| userId | login | password | email | phoneNum | role | accCreated |
-| -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| VARCHAR(36) | VARCHAR(255) | VARCHAR(255) | VARCHAR(255) | INT | VARCHAR(50) | DATETIME |
-| randomUUID()  | "myLogin" | "myPassword" | "example@email.com" | 666777888 | "user" | "10.10.2023 19:23" |
-
-Vehicles table:
-| userId | vehicleId | vehicleName | vehicleType | registrationTime |
-| -------------- | -------------- | -------------- | -------------- | -------------- |
-| VARCHAR(36)  | VARCHAR(36) | VARCHAR(255) | VARCHAR(50) | DATETIME |
-| randomUUID()  | randomUUID() | "myDrone" | "Quadcopter" | "10.10.2023 19:23" |
+A MySQL database was used to store user and vehicle information.    
+The entire database is containerised using Docker.    
+The JDBC interface has been used to create a connection to the database.    
 
 ### Table: robotTaskerApi.users
 
