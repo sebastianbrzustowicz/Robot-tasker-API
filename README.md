@@ -14,31 +14,64 @@ Only alpha version of API with license restrictions is available.
 Please contact me if you are interested in cooperation.   
 I am willing to help.  
 
+## Deploy
+
+All in one deploy copy-paste commands for windows and linux systems.
+
+Windows:
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\run_docker_commands.ps1
+```
+Linux:
+```console
+chmod +x run_docker_commands.sh
+./run_docker_commands.sh
+```
+
 ## Docker
+
+### Database
 
 The Dockerfile will provide containerisation and initialisation of the MySQL database.  
 There is a set of commands to get to the same point when starting the application.  
-Firstly make sure you are in `Docker` directory.   
+Firstly make sure you are in main project directory.   
 Now u can execute building process:   
-```
-docker build -t mysql:latest .
+```console
+docker build -t mysqlrobottaskerapi:latest -f Docker_Database/Dockerfile .
 ```
 You can then run the container with the default password or you can change it (don't forget to change it in the project properties too):
-```
-docker run --name robotTaskerApiContainer -e MYSQL_ROOT_PASSWORD=sebastian -d -p 3306:3306 mysql:latest
+```console
+docker run --name robotTaskerApiDatabaseContainer -e MYSQL_ROOT_PASSWORD=sebastian -d -p 3306:3306 mysqlrobottaskerapi:latest
 ```
 Now the MySQL container should run properly.
 
-## Initialize app
+### Server
 
-Now it is time to compile and run API created in Java.
-Make sure u are in main project directory this time.   
-Firstly install all dependencies:
+Main Dockerfile will provide containerisation and initialisation of the Java application database.  
+There is a set of commands to get to the same point when starting the application.  
+Make sure you are in main project directory.   
+Now u can execute building process:   
+```console
+docker build -t javarobottaskerapi:latest -f Docker_Server/Dockerfile .
 ```
+I chose port 8081 for Java container, it is up to you.    
+You can then run the container:
+```console
+docker run --name robotTaskerAPIServerContainer -d -p 8080:8080 javarobottaskerapi:latest
+```
+Now the Java container should run properly.
+
+## Initialize development stage
+
+If u want to make a changes to API u need to compile and run API created in Java.
+Make sure you are in main project directory.   
+Firstly install all dependencies:
+```console
 mvn clean install
 ```
 Then run application:
-```
+```console
 mvn spring-boot:run
 ```
 Now everything should be set up.
@@ -80,7 +113,7 @@ WebSocket endpoints for client (publisher) and vehicle (subscriber):
 | :large_blue_circle: SEND  | /app/vehicle/disconnect | disconnect from specific vehicle | String | null |
 | :large_blue_circle: SEND  | /app/vehicle/data | send actual data to vehicle | String | null |
 
-## Tables
+## MySQL database
 
 A MySQL database was used to store user and vehicle information.  
 The entire database is containerised using Docker.  
@@ -97,6 +130,28 @@ Vehicles table:
 | -------------- | -------------- | -------------- | -------------- | -------------- |
 | VARCHAR(36)  | VARCHAR(36) | VARCHAR(255) | VARCHAR(50) | DATETIME |
 | randomUUID()  | randomUUID() | "myDrone" | "Quadcopter" | "10.10.2023 19:23" |
+
+### Table: robotTaskerApi.users
+
+| Column Name   | Data Type             | Constraints     |
+|---------------|-----------------------|-----------------|
+| userId        | VARCHAR(36)           | PRIMARY KEY     |
+| login         | VARCHAR(255) NOT NULL |                 |
+| password      | VARCHAR(255) NOT NULL |                 |
+| email         | VARCHAR(255) NOT NULL |                 |
+| phoneNum      | INT NOT NULL          |                 |
+| role          | VARCHAR(50) NOT NULL  |                 |
+| accCreated    | DATETIME NOT NULL     |                 |
+
+### Table: robotTaskerApi.vehicles
+
+| Column Name   | Data Type             | Constraints     |
+|---------------|-----------------------|-----------------|
+| vehicleId     | VARCHAR(255) NOT NULL | PRIMARY KEY     |
+| userID        | VARCHAR(36) NULL      | FOREIGN KEY (userId) REFERENCES robotTaskerApi.users(userId) |
+| vehicleName   | VARCHAR(255) NOT NULL |                 |
+| vehicleType   | VARCHAR(50) NOT NULL  |                 |
+| registrationTime | DATETIME NULL      |                 |
 
 ## Data transmitted to vehicle
 
@@ -125,7 +180,7 @@ Example values:
 
 Data interpretation depends on vehicle used and its needs.
 
-Example encoding:
+Example encoding:    
 mode: 1 - Mild, 2 - Normal, 3 - Sport.   
 vtol: 0 - no action, 1 - take off, 2 - landing.
 
