@@ -31,6 +31,8 @@ chmod +x run_docker_commands.sh
 
 ## Docker
 
+Follow these commands if u want to make containers manually and adjust them to your prorities.
+
 ### Database
 
 The Dockerfile will provide containerisation and initialisation of the MySQL database.  
@@ -78,6 +80,10 @@ Now everything should be set up.
 
 ## Endpoints
 
+Two architectures were used to create the API: Rest API and WebSocket.
+
+### Rest API
+
 Rest API part embraces user and vehicle management issues.    
 Some of the options implemented are creating account, changing user's data, vehicle registration.
 Rest endpoints for client only:    
@@ -93,6 +99,8 @@ Rest endpoints for client only:
 | :yellow_circle: POST | /rest/vehicle/custom/register | register custom vehicle | Vehicle | String |
 | :green_circle: GET | /rest/vehicle/information | information about user's vehicles | String | List&lt;Vehicle&gt; |
 | :yellow_circle: POST | /rest/vehicle/delete | deregistration user's vehicle | String | String |
+
+### WebSocket
 
 A websocket approach was implemented for fast, real-time data transmission between the client and the vehicle.   
 Websocket is implemented as multi-channel server-side application with STOMP approach.    
