@@ -1,5 +1,6 @@
-package pl.sebastianbrzustowicz.CrudApp;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
+// redundant class, possible future use
 public class VehicleData {
 
     private String vehicleId;

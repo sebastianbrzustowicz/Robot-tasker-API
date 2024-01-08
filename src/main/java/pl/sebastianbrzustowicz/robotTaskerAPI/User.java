@@ -1,11 +1,8 @@
-package pl.sebastianbrzustowicz.CrudApp;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
 //import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
-import java.time.LocalDate;
 
 @Data
 //AllArgsConstructor
@@ -30,12 +27,6 @@ public class User {
         this.accCreated = accCreated;
     }
 
-    //private String generateRandomId() {
-    //    // Generating random UUID
-    //    UUID uuid = UUID.randomUUID();
-    //    return uuid.toString();
-    //}
-
     // Getting user's variables
     public String getUserId() { return this.userId; }
     public String getLogin() { return this.login; }
@@ -50,11 +41,5 @@ public class User {
     public void setPassword(String newPassword) { this.password = newPassword; }
     public void setEmail(String newEmail) { this.email = newEmail; }
     public void setPhoneNumber(int newPhoneNumber) { this.phoneNumber = newPhoneNumber; }
-
-    // Adding user's variables data
-    //public void addVehicle(String vehicleId) { this.vehicles.add(vehicleId); }
-
-    // Removing user's variables data
-    //public void deleteVehicle(String vehicleId) { this.vehicles.remove(vehicleId); }
 
 }

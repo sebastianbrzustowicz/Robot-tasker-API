@@ -1,9 +1,8 @@
-package pl.sebastianbrzustowicz.CrudApp;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;

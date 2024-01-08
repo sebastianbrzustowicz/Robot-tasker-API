@@ -1,13 +1,13 @@
-package pl.sebastianbrzustowicz.CrudApp;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrudApplication {
+public class robotTaskerAPIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CrudApplication.class, args);
+		SpringApplication.run(robotTaskerAPIApplication.class, args);
 	}
 
 }

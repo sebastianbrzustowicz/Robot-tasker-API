@@ -1,4 +1,4 @@
-package pl.sebastianbrzustowicz.CrudApp;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

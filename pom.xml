@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.sebastianbrzustowicz</groupId>
-	<artifactId>CrudApp</artifactId>
+	<artifactId>robotTaskerAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CrudApp</name>
 	<description>CRUD application</description>

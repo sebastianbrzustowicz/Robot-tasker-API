@@ -1,8 +1,7 @@
-package pl.sebastianbrzustowicz.CrudApp;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -59,7 +58,6 @@ public class UserController {
     public String deleteVehicle(@RequestBody Map<String, String> data) {
         String vehicleId = data.get("vehicleId");
         int isVehicleDeleted = userRepository.deleteVehicle(vehicleId);
-        System.out.println("Wartość zmiennej: " + vehicleId);
         if (isVehicleDeleted == 1) { return "Deleted vehicle with ID: " + vehicleId; }
         else { return "Cannot delete"; }
     }
@@ -68,7 +66,6 @@ public class UserController {
     public String changeUserData(@RequestBody User updatedUser) {
         String userId = updatedUser.getUserId();
         String newPassword = updatedUser.getPassword();
-
         int count = userRepository.userExists(userId);
 
         if (count > 0) {
@@ -82,7 +79,6 @@ public class UserController {
     @PutMapping("/admin/changedata")
     public String changeUserDataByAdmin(@RequestBody User updatedUser) {
         String userId = updatedUser.getUserId();
-
         int count = userRepository.userExists(userId);
 
         if (count > 0) {

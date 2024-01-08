@@ -1,11 +1,9 @@
-package pl.sebastianbrzustowicz.CrudApp;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -100,9 +98,9 @@ public class UserRepository {
     }
 
     public int registerCustomVehicle(Vehicle customVehicle) {
-        String sql = "INSERT INTO vehicles (userId, vehicleId, vehicleName, vehicleType, registrationTime) " +
+        String sql = "INSERT INTO vehicles (vehicleId, userId, vehicleName, vehicleType, registrationTime) " +
                 "VALUES (?, ?, ?, ?, CONVERT_TZ(NOW(), 'UTC', 'Europe/Warsaw'));";
-        return jdbcTemplate.update(sql, customVehicle.getUserId(), customVehicle.getVehicleId(),
+        return jdbcTemplate.update(sql, customVehicle.getVehicleId(), customVehicle.getUserId(),
                 customVehicle.getVehicleName(), customVehicle.getVehicleType()
         );
     }
