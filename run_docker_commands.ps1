@@ -1,3 +1,5 @@
+mvn clean install
+
 docker network create mynetwork
 
 docker build -t mysqlrobottaskerapi:latest -f Docker_Database/Dockerfile .
