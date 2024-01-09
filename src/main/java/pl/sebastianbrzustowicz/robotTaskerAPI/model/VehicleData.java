@@ -1,4 +1,4 @@
-package pl.sebastianbrzustowicz.robotTaskerAPI;
+package pl.sebastianbrzustowicz.robotTaskerAPI.model;
 
 // redundant class, possible future use
 public class VehicleData {

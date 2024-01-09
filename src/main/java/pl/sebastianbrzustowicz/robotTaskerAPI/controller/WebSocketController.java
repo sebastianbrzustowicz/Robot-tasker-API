@@ -1,4 +1,4 @@
-package pl.sebastianbrzustowicz.robotTaskerAPI;
+package pl.sebastianbrzustowicz.robotTaskerAPI.controller;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

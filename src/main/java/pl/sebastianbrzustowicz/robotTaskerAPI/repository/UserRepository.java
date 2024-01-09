@@ -1,9 +1,12 @@
-package pl.sebastianbrzustowicz.robotTaskerAPI;
+package pl.sebastianbrzustowicz.robotTaskerAPI.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import pl.sebastianbrzustowicz.robotTaskerAPI.model.User;
+import pl.sebastianbrzustowicz.robotTaskerAPI.model.Vehicle;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

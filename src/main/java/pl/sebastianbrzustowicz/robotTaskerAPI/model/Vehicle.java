@@ -1,4 +1,4 @@
-package pl.sebastianbrzustowicz.robotTaskerAPI;
+package pl.sebastianbrzustowicz.robotTaskerAPI.model;
 
 //import lombok.AllArgsConstructor;
 import lombok.Data;

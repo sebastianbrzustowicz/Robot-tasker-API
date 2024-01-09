@@ -5,6 +5,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import pl.sebastianbrzustowicz.robotTaskerAPI.controller.UserController;
+import pl.sebastianbrzustowicz.robotTaskerAPI.model.User;
+import pl.sebastianbrzustowicz.robotTaskerAPI.model.Vehicle;
+import pl.sebastianbrzustowicz.robotTaskerAPI.repository.UserRepository;
 
 import java.util.HashMap;
 import java.util.Map;
