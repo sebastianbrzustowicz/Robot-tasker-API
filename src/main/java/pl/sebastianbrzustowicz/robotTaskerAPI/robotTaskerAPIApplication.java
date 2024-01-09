@@ -1,4 +1,4 @@
-package pl.sebastianbrzustowicz.robotTaskerAPI.application;
+package pl.sebastianbrzustowicz.robotTaskerAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
