@@ -1,6 +1,6 @@
 package pl.sebastianbrzustowicz.robotTaskerAPI.model;
 
-// redundant class, possible future use
+
 public class VehicleData {
 
     private String vehicleId;

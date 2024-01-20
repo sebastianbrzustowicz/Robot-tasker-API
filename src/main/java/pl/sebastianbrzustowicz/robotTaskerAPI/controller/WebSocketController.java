@@ -1,6 +1,8 @@
 package pl.sebastianbrzustowicz.robotTaskerAPI.controller;
 
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import java.util.HashMap;
@@ -23,6 +25,7 @@ public class WebSocketController {
 
     @MessageMapping("/vehicle/connect")
     public void connectVehicle(String vehicleId) {
+        //logger.info("SERVER ENDPOINT REACHED. PAYLOAD: " + vehicleId);
         String channel = "/topic/vehicle-status/" + vehicleId;
         userToChannelMap.put(vehicleId, channel);
         String message = "User connected: " + vehicleId;

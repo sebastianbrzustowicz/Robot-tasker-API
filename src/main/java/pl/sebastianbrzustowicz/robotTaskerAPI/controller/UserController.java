@@ -17,6 +17,16 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @GetMapping("/test")
+    public String test() {
+        return "rest endpoint works";
+    }
+
+    @GetMapping("/testdb")
+    public String getDBName() {
+        return userRepository.getDBName();
+    }
+
     // RETURN: rows affected
     @PostMapping("/user/register")
     public int registerUser(@RequestBody User newUser) {

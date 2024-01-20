@@ -17,6 +17,11 @@ public class UserRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    public String getDBName() {
+        String sql = "SELECT DATABASE();";
+        return jdbcTemplate.queryForObject(sql, String.class);
+    }
+
     public boolean existsByEmail(String email) {
         String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
         return Optional.ofNullable(jdbcTemplate.queryForObject(sql, Integer.class, email))

@@ -6,19 +6,19 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import pl.sebastianbrzustowicz.robotTaskerAPI.model.VehicleData;
-import pl.sebastianbrzustowicz.robotTaskerAPI.repository.WebSocketHandlerRepository;
+import pl.sebastianbrzustowicz.robotTaskerAPI.repository.WebSocketSingleRoomHandlerRepository;
 
 import java.io.IOException;
 
 @Component
-public class WebSocketHandler extends AbstractWebSocketHandler {
+public class WebSocketSingleRoomHandler extends AbstractWebSocketHandler {
 
-    private final WebSocketHandlerRepository webSocketHandlerRepository;
+    private final WebSocketSingleRoomHandlerRepository webSocketSingleRoomHandlerRepository;
     private VehicleData vehicleData;
 
     @Autowired
-    public WebSocketHandler(WebSocketHandlerRepository webSocketHandlerRepository) {
-        this.webSocketHandlerRepository = webSocketHandlerRepository;
+    public WebSocketSingleRoomHandler(WebSocketSingleRoomHandlerRepository webSocketSingleRoomHandlerRepository) {
+        this.webSocketSingleRoomHandlerRepository = webSocketSingleRoomHandlerRepository;
     }
 
     @Override
@@ -26,8 +26,8 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
         String msg = String.valueOf(message.getPayload());
         System.out.println("MESSAGE RECEIVED: " + msg);
         if (msg.startsWith("vehicleId: ") && msg.length() == 47) {
-            String vehicleId = webSocketHandlerRepository.getLast36Chars(msg);
-            Boolean isVehicleIdStored = webSocketHandlerRepository.createSessionVehicle(vehicleId);
+            String vehicleId = webSocketSingleRoomHandlerRepository.getLast36Chars(msg);
+            Boolean isVehicleIdStored = webSocketSingleRoomHandlerRepository.createSessionVehicle(vehicleId);
             session.sendMessage(new TextMessage(isVehicleIdStored.toString()));
             return;
         }

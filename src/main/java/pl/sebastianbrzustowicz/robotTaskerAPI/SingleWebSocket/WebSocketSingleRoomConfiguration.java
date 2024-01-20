@@ -6,26 +6,26 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
-import pl.sebastianbrzustowicz.robotTaskerAPI.repository.WebSocketHandlerRepository;
+import pl.sebastianbrzustowicz.robotTaskerAPI.repository.WebSocketSingleRoomHandlerRepository;
 
 @Configuration
 @EnableWebSocket
 @EnableWebSocketMessageBroker
-public class WebSocketConfiguration implements WebSocketConfigurer {
+public class WebSocketSingleRoomConfiguration implements WebSocketConfigurer {
 
-    private final WebSocketHandlerRepository webSocketHandlerRepository;
+    private final WebSocketSingleRoomHandlerRepository webSocketSingleRoomHandlerRepository;
 
     @Autowired
-    public WebSocketConfiguration(WebSocketHandlerRepository webSocketHandlerRepository) {
-        this.webSocketHandlerRepository = webSocketHandlerRepository;
+    public WebSocketSingleRoomConfiguration(WebSocketSingleRoomHandlerRepository webSocketSingleRoomHandlerRepository) {
+        this.webSocketSingleRoomHandlerRepository = webSocketSingleRoomHandlerRepository;
     }
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(webSocketHandler(), "/websocket");
+        registry.addHandler(webSocketHandler(), "/websocket-single-room");
     }
 
-    private WebSocketHandler webSocketHandler() {
-        return new WebSocketHandler(webSocketHandlerRepository);
+    private WebSocketSingleRoomHandler webSocketHandler() {
+        return new WebSocketSingleRoomHandler(webSocketSingleRoomHandlerRepository);
     }
 }

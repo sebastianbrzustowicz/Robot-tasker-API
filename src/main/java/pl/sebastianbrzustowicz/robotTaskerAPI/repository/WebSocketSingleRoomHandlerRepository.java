@@ -5,13 +5,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class WebSocketHandlerRepository {
+public class WebSocketSingleRoomHandlerRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private String vehicleId;
 
     @Autowired
-    public WebSocketHandlerRepository(JdbcTemplate jdbcTemplate) {
+    public WebSocketSingleRoomHandlerRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

@@ -30,17 +30,17 @@
     }
 
     function sendConnectMessage() {
-        var vehicleID = prompt("Enter your vehicleID:");
+        var vehicleID = "e218e18c-9e1c-11ee-8c90-0242ac120002";
         stompClient.send('/app/vehicle/connect', {}, vehicleID);
     }
 
     function sendDisconnectMessage() {
-        var vehicleID = prompt("Enter your vehicleID:");
+        var vehicleID = "e218e18c-9e1c-11ee-8c90-0242ac120002";
         stompClient.send('/app/vehicle/disconnect', {}, vehicleID);
     }
 
     function sendDataMessage() {
-        var vehicleID = prompt("Enter your vehicleID:");
+        var vehicleID = "e218e18c-9e1c-11ee-8c90-0242ac120002";
         var vehicleData = {
         vehicleId: "e218e18c-9e1c-11ee-8c90-0242ac120002",
         mode: 1,
