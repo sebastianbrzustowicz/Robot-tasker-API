@@ -151,34 +151,42 @@ The JDBC interface has been used to create a connection to the database.
 
 ## Data transmitted to vehicle
 
-Data is sent in stringified JSON format.    
-There are no restrictions imposed on the data to be transmitted in terms of quantity or naming.    
-Keywords and types may vary depending on vehicle type used.   
-Basically the data content depends on the client and the vehicle implementation, because this app is just a connector.    
-Current state of object is fitting quadcopter data.   
-Example values:  
+The data transferred have to be the same type in client and vehicle.    
+Handshake should be established between server and client according to data order.    
+The software provides auto-response after receiving message.      
+Keywords and types may vary depending on vehicle type used.     
+Current state of object is fitting quadcopter data.     
+The data is sent and received in raw string format and its values stands for variables below.      
 
-```json
-{
-  "vehicleId": "e218e18c-9e1c-11ee-8c90-0242ac120002",
-  "mode": 2,
-  "vtol": 0,
-  "x": 1,
-  "y": 4,
-  "alt": 50,
-  "yaw": 0,
-  "camTrig": 0,
-  "camTog": 0,
-  "camPitch": 0,
-  "clamp": 0
-}
+From client:
+
+```
+VEHICLE                                 // <- fixed prefix for vehicle message
+0                                       // <- actual roll from sensor
+0                                       // <- actual pitch from sensor
+0                                       // <- actual yaw from sensor
+0                                       // <- actual altitude from sensor
+0                                       // <- actual isClamp
+END                                     // <- fixed ending statement of message
 ```
 
-Data interpretation depends on vehicle used and its needs.
+From vehicle:
 
-Example encoding:    
-mode: 1 - Mild, 2 - Normal, 3 - Sport.   
-vtol: 0 - no action, 1 - take off, 2 - landing.
+```
+CLIENT                                  // <- fixed prefix for client message
+4436ed9a-5228-46c0-b825-6d0a3cd90437    // <- vehicleId
+1                                       // <- mode
+0                                       // <- vtol
+0                                       // <- x
+0                                       // <- y
+0                                       // <- alt
+0                                       // <- yaw
+false                                   // <- camTrig
+false                                   // <- camTog
+0                                       // <- camPitch
+false                                   // <- clamp
+END                                     // <- fixed ending statement of message
+```
 
 ## Tests
 
