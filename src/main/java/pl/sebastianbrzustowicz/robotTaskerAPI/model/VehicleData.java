@@ -12,13 +12,17 @@ public class VehicleData {
     private int x;
     private int y;
     private int alt;
-    private int yaw;
+    private int yawd;
     private boolean camTrig;
     private boolean camTog;
     private int camPitch;
     private boolean clamp;
     // sensors values
-    private int altitude;
+    private double roll;
+    private double pitch;
+    private double yaw;
+    private double altitude;
+    private boolean isClamp;
 
     // Getters and setters
 
@@ -29,7 +33,7 @@ public class VehicleData {
         this.x = 0;
         this.y = 0;
         this.alt = 0;
-        this.yaw = 0;
+        this.yawd = 0;
         this.camTrig = false;
         this.camTog = false;
         this.camPitch = 0;
@@ -55,15 +59,19 @@ public class VehicleData {
         this.x = x;
         this.y = y;
         this.alt = alt;
-        this.yaw = yaw;
+        this.yawd = yaw;
         this.camTrig = camTrig;
         this.camTog = camTog;
         this.camPitch = camPitch;
         this.clamp = clamp;
     }
 
-    public void saveSensorsValues(int altitude) {
-        this.alt = altitude;
+    public void saveSensorsValues(double roll, double pitch, double yaw, double altitude, boolean isClamp) {
+        this.roll = roll;
+        this.pitch = pitch;
+        this.yaw = yaw;
+        this.altitude = altitude;
+        this.isClamp = isClamp;
     }
 
     public String getSensorsFrame() {
@@ -102,7 +110,7 @@ public class VehicleData {
         dataFrame.append(x).append("\n");
         dataFrame.append(y).append("\n");
         dataFrame.append(alt).append("\n");
-        dataFrame.append(yaw).append("\n");
+        dataFrame.append(yawd).append("\n");
         dataFrame.append(camTrig).append("\n");
         dataFrame.append(camTog).append("\n");
         dataFrame.append(camPitch).append("\n");

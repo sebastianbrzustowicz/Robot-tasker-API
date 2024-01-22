@@ -26,6 +26,7 @@ public class WebSocketSingleRoomHandler extends AbstractWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException {
         String msg = String.valueOf(message.getPayload());
         System.out.println("MESSAGE RECEIVED:\n" + msg);
+        String[] lines = msg.split("\n");
         if (msg.startsWith("vehicleId: ") && msg.length() == 47) {
             String vehicleId = webSocketSingleRoomHandlerRepository.getLast36Chars(msg);
             Boolean isVehicleIdStored = webSocketSingleRoomHandlerRepository.createSessionVehicle(vehicleId);
@@ -33,8 +34,7 @@ public class WebSocketSingleRoomHandler extends AbstractWebSocketHandler {
             return;
         }
 
-        if (msg.startsWith("CLIENT")) {
-            String[] lines = msg.split("\n");
+        if (msg.startsWith("CLIENT") && lines.length == 13) {
             String vehicleId = lines[1];
             int mode = Integer.parseInt(lines[2]);
             int vtol = Integer.parseInt(lines[3]);
@@ -52,10 +52,13 @@ public class WebSocketSingleRoomHandler extends AbstractWebSocketHandler {
             return;
         }
 
-        if (msg.startsWith("VEHICLE")) {
-            String[] lines = msg.split("\n");
-            int altitude = Integer.parseInt(lines[1]);
-            vehicleData.saveSensorsValues(altitude);
+        if (msg.startsWith("VEHICLE") && lines.length == 7) {
+            double roll = Double.parseDouble(lines[1]);
+            double pitch = Double.parseDouble(lines[2]);
+            double yaw = Double.parseDouble(lines[3]);
+            double altitude = Double.parseDouble(lines[4]);
+            boolean isClamp = Boolean.parseBoolean(lines[5]);
+            vehicleData.saveSensorsValues(roll, pitch, yaw, altitude, isClamp);
             // Send actual desired values to vehicle
             session.sendMessage(new TextMessage(vehicleData.getDesiredFrame()));
             return;
