@@ -121,6 +121,14 @@ WebSocket endpoints for client (publisher) and vehicle (subscriber):
 | :large_blue_circle: SEND  | /app/vehicle/disconnect | disconnect from specific vehicle | String | null |
 | :large_blue_circle: SEND  | /app/vehicle/data | send actual data to vehicle | String | null |
 
+Implemented WebSocket for specific frame formats outlined in the 'Data transmitted to vehicle' section.      
+This WebSocket is single channel version for local use.       
+It is helpful for development, debugging and testing new features.      
+
+| STOMP method | endpoint | description | request type | response type |
+| -------------- | -------------- | -------------- | -------------- | -------------- |
+| :large_blue_circle: SEND | /websocket-single-room | local WebSocket channel | String | String |
+
 ## MySQL database
 
 A MySQL database was used to store user and vehicle information.    
