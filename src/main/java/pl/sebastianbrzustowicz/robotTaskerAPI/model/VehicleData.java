@@ -1,6 +1,10 @@
 package pl.sebastianbrzustowicz.robotTaskerAPI.model;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class VehicleData {
 
     private static VehicleData instance;
@@ -9,9 +13,9 @@ public class VehicleData {
     private String vehicleId;
     private int mode;
     private int vtol;
-    private int x;
-    private int y;
-    private int alt;
+    private int pitchd;
+    private int rolld;
+    private int altituded;
     private int yawd;
     private boolean camTrig;
     private boolean camTog;
@@ -30,9 +34,9 @@ public class VehicleData {
         this.vehicleId = "";
         this.mode = 1;
         this.vtol = 0;
-        this.x = 0;
-        this.y = 0;
-        this.alt = 0;
+        this.pitchd = 0;
+        this.rolld = 0;
+        this.altituded = 0;
         this.yawd = 0;
         this.camTrig = false;
         this.camTog = false;
@@ -56,9 +60,9 @@ public class VehicleData {
         this.vehicleId = vehicleId;
         this.mode = mode;
         this.vtol = vtol;
-        this.x = x;
-        this.y = y;
-        this.alt = alt;
+        this.pitchd = x;
+        this.rolld = y;
+        this.altituded = alt;
         this.yawd = yaw;
         this.camTrig = camTrig;
         this.camTog = camTog;
@@ -107,9 +111,9 @@ public class VehicleData {
         dataFrame.append(vehicleId).append("\n");
         dataFrame.append(mode).append("\n");
         dataFrame.append(vtol).append("\n");
-        dataFrame.append(x).append("\n");
-        dataFrame.append(y).append("\n");
-        dataFrame.append(alt).append("\n");
+        dataFrame.append(pitchd).append("\n");
+        dataFrame.append(rolld).append("\n");
+        dataFrame.append(altituded).append("\n");
         dataFrame.append(yawd).append("\n");
         dataFrame.append(camTrig).append("\n");
         dataFrame.append(camTog).append("\n");

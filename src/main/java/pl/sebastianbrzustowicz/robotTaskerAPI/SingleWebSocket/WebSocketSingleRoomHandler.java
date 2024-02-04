@@ -8,7 +8,11 @@ import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import pl.sebastianbrzustowicz.robotTaskerAPI.model.VehicleData;
 import pl.sebastianbrzustowicz.robotTaskerAPI.repository.WebSocketSingleRoomHandlerRepository;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Component
 public class WebSocketSingleRoomHandler extends AbstractWebSocketHandler {
@@ -61,9 +65,34 @@ public class WebSocketSingleRoomHandler extends AbstractWebSocketHandler {
             vehicleData.saveSensorsValues(roll, pitch, yaw, altitude, isClamp);
             // Send actual desired values to vehicle
             session.sendMessage(new TextMessage(vehicleData.getDesiredFrame()));
+
+            // saving data to file
+            try {
+                String filePath = "data.csv";
+                saveToFile(filePath, vehicleData.getRolld(), vehicleData.getPitchd(), vehicleData.getYawd(), vehicleData.getAltituded(), roll, pitch, yaw, altitude, isClamp);
+            } catch (IOException e) {
+                System.err.println("Error during saving data to file: " + e.getMessage());
+            }
+
             return;
         }
 
         session.sendMessage(new TextMessage("MESSAGE NOT CLASSIFIED"));
     }
+
+    private static void saveToFile(String filePath, double rolld, double pitchd, double yawd,
+                                   double altituded, double roll, double pitch, double yaw, double altitude, boolean isClamp) throws IOException {
+        if (!Files.exists(Paths.get(filePath))) {
+            Files.createFile(Paths.get(filePath));
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            // Save data in new line
+            writer.write(rolld + ";" + pitchd + ";" + yawd + ";" +
+                    altituded + ";" + roll + ";" + pitch + ";" +
+                    yaw + ";" + altitude + ";" + isClamp);
+            writer.newLine();
+        }
+    }
+
 }
